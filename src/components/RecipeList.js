@@ -1,18 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Recipe from './Recipe'
+import { RecipeConext } from './App'
 
 
-export default function RecipeList(props) {
-    const {
-        recipes,
-        handleRecipeAdd,
-        handleRecipeDelete
-    } = props
+export default function RecipeList({ recipes }) {
+
+    const { handleRecipeAdd } = useContext(RecipeConext)
+
     return (
         <div className="recipe-list">
             <div>
                 {recipes.map(recipe => {
-                    return <Recipe key={recipe.id} {...recipe} handleRecipeDelete={handleRecipeDelete}/>
+                    return <Recipe key={recipe.id} {...recipe} />
                 })}
             </div>
             <div className="recipe-list__add-recipe-btn-container">
